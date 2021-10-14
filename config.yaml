@@ -70,8 +70,8 @@ params:
         url: '#'
       - name: This is me
         url: blogs/aboutme
-      - name: Generic Blog
-        url: blogs/ipsum
+      - name: Let's talk about Pay Discrimination
+        url: blogs/omega
       - name: Elements
         url: elements.html
     menu: Menu
