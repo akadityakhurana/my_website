@@ -8,15 +8,14 @@ params:
   banner:
     buttonText: Get Started
     subtitle: |-
-      A RESPONSIVE SITE TEMPLATE DESIGNED BY HTML5 UP
-      AND RELEASED UNDER THE CREATIVE COMMONS.
-    title: Hi, my name is Aditya
+      Hey, I am Aditya. Welcome to my website!
+    title: Aditya Khurana
   blog: {}
   contact:
     address:
       - city: London
-        country: United States
-        street: Kremlin
+        country: United Kingdom
+        street: Paddington
         title: Address
     buttonClear: Clear
     buttonSend: Send message
@@ -25,7 +24,7 @@ params:
         title: Email
     enable: yes
     phone:
-      - phone: (000) 000-0000 x1234
+      - phone: +44 7880333637
         title: Phone
   custom_css: []
   custom_js: []
@@ -35,7 +34,7 @@ params:
     text: Please visit [this page](/)
   favicon: favicon.ico
   footer:
-    copyright: Company Name
+    copyright: Aditya Khurana
     enable: yes
     quicklinks:
       - alt: HTML5 UP
@@ -45,18 +44,18 @@ params:
 #      - icon: fa-twitter
 #        label: Twitter
 #        url: https://www.twitter.com
-      - icon: fa-facebook
-        label: Facebook
-        url: https://www.facebook.com
+#      - icon: fa-facebook
+#        label: Facebook
+#        url: https://www.facebook.com
       - icon: fa-instagram
         label: Instagram
-        url: https://www.instagram.com
+        url: https://www.instagram.com/adityakhurana27/
       - icon: fa-github
         label: GitHub
-        url: https://www.github.com
+        url: https://github.com/akadityakhurana
       - icon: fa-linkedin
         label: LinkedIn
-        url: https://www.linkedin.com
+        url: https://www.linkedin.com/in/aditya-khurana/
   image: ''
   name: Your name
   navigation:
@@ -69,8 +68,8 @@ params:
     links:
       - name: Home
         url: '#'
-      - name: Blogs
-        url: blogs
+      - name: This is me
+        url: blogs/aboutme
       - name: Generic Blog
         url: blogs/ipsum
       - name: Elements
