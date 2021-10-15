@@ -62,18 +62,18 @@ params:
     button1:
       - name: Get Started
         url: blogs
-    button2:
-      - name: Log In
-        url: '#'
+    #button2:
+    #  - name: Log In
+    #    url: '#'
     links:
       - name: Home
         url: '#'
       - name: This is me
         url: blogs/aboutme
-      - name: Let's talk about Pay Discrimination
-        url: blogs/omega
-      - name: Elements
-        url: elements.html
+      - name: My Portfolio
+        url: portfolio
+      - name: 
+        url: 
     menu: Menu
     subtitle: By HTML5 Up
     title: Forty
@@ -81,9 +81,9 @@ params:
     enable: yes
     showcase:
       - image: lbs.jpg
-        subtitle: How to make money?
-        title: Risk-Return of DJIA Stocks
-        url: blogs/risk_return
+        subtitle:
+        title: Let's talk about Pay Discrimination
+        url: portfolio/omega
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
         title: tempus
