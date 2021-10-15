@@ -1,0 +1,126 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:26:09-05:00"
+description:
+draft: false
+image: alcohol.jpg
+keywords: ""
+slug: drink
+title: How much do we drink?
+---
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(fivethirtyeight)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+library(rvest) # to scrape wikipedia page
+library(scales) # to make chart scales "dynamic"
+library(ggrepel) # necessary for the inflation chart
+
+```
+
+
+
+# Where Do People Drink The Most Beer, Wine And Spirits?
+
+
+```{r, load_alcohol_data}
+library(fivethirtyeight)
+data(drinks)
+
+
+# or download directly
+# alcohol_direct <- read_csv("https://raw.githubusercontent.com/fivethirtyeight/data/master/alcohol-consumption/drinks.csv")
+
+```
+
+
+What are the variable types? Any missing values we should worry about? 
+
+```{r glimpse_skim_data}
+# YOUR CODE GOES HERE
+glimpse(drinks)
+skim(drinks)
+
+```
+
+The variables are character and numeric. We can see this in the output of the skim() function. Regardless, we are missing a few variables. 1. We are missing variables that describe total population size, we are missing units, is it 200, 200 million, drinks per person, etc. A variable that would also be interesting is one that defines whether there are drinking restrictions in place in certain countries due to religious/societal reasons.  Since we may want to find out how many people drink alcohol and how many people abstain from the activity, it is important to have some colour on the percentage of drinking population.  To interpret an international comparison, it is imperative to know a national average of serving size and average of alcohol content per serving.  To facilitate analysis on drinking patterns relative to availability of alcohol, we need the import and export data on beer, wine, and different types of spirits.  If the data were a time series, we would be able to ascertain the changes in tastes, growth post prohibition, effect of globalisation in growing consumption through trade and technological innovation of sustaining shelf life.
+
+Make a plot that shows the top 25 beer consuming countries
+
+```{r beer_plot}
+# YOUR CODE GOES HERE
+drinks_beer <- drinks %>%
+  slice_max(order_by = beer_servings, n = 25) %>%
+  ggplot(aes(x = beer_servings, y = fct_reorder(country, beer_servings), fill = country)) +
+  geom_col() +
+  labs(title = "Top 25 Beer Consuming Countries", x = "Beer consumption", y = "Countries") +
+  NULL
+
+drinks_beer
+
+
+```
+
+Make a plot that shows the top 25 wine consuming countries
+
+```{r wine_plot}
+
+# YOUR CODE GOES HERE
+drinks_wine <- drinks %>%
+  slice_max(order_by = wine_servings, n = 25) %>%
+  ggplot(aes(x = wine_servings, y = fct_reorder(country, wine_servings), fill = country)) +
+  geom_col() +
+  labs(title = "Top 25 Wine Consuming Countries", subtitle = "", x = "Wine consumption", y = "Countries") +
+  NULL
+
+drinks_wine
+
+```
+
+Finally, make a plot that shows the top 25 spirit consuming countries
+```{r spirit_plot}
+# YOUR CODE GOES HERE
+drinks_spirits <- drinks %>%
+  slice_max(order_by = spirit_servings, n = 25) %>%
+  ggplot(aes(x = spirit_servings, y = fct_reorder(country, spirit_servings), fill = country)) +
+  geom_col() +
+  labs(title = "Top 25 Spirit Consuming Countries", x = "Spirit consumption", y = "Countries") +
+  NULL
+
+drinks_spirits
+
+```
+
+After a brief discussion with our group we drew the following conclusions:
+
+1. Most Asian countries did not rank high on either of the scales. People from Asia do not drink a lot of beer, nor wine, however, there is a lot of spirit production using rice. This is evidenced by the third chart, on which we do notice Thailand, China, Japan, and other countries.
+2. Developing countries tend to drink what they can easily produce as alcohol is an expensive, highly taxed good. So, for example Namibia ranks number 1 in beer consumption (Namibia Breweries Limited). Moreover, developing countries tend to have less strict regulations over the advertisement, sale, and consumption of alcohol (Grenada), that can lead to alcohol dependencies.
+3. Finally, alcohol consumptions is very much impacted by cultural and societal values. For example, France is the number of on the list of wine drinking, and most people also associate France with wine and wine production.
+4. Bonus point: climate affects alcohol consumption. Cold beers cool you down in the summer, spirits warm you up in the winter. 

@@ -84,10 +84,10 @@ params:
         subtitle:
         title: Let's talk about Pay Discrimination
         url: portfolio/omega
-      - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: tempus
-        url: 
+      - image: alcohol.jpg
+        subtitle: 
+        title: How much do we drink?
+        url: portfolio/drink
       - image: pic03.jpg
         subtitle: Lorem Etiam Nullam
         title: Magna
