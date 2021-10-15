@@ -72,8 +72,8 @@ params:
         url: blogs/aboutme
       - name: My Portfolio
         url: portfolio
-      - name: 
-        url: 
+      - name: My CV
+        url: blogs/cv
     menu: Menu
     subtitle: By HTML5 Up
     title: Forty

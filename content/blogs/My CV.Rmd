@@ -1,0 +1,14 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:26:09-05:00"
+description:
+draft: false
+image: 
+keywords: ""
+slug: cv
+title: My CV
+---
+
+Click [here](https://drive.google.com/file/d/1Nerc_AZE4zHRphM47vJEgiA-TDIzS49f/view?usp=sharing) to view my CV!
