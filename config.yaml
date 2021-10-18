@@ -80,7 +80,7 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: lbs.jpg
+      - image: omega.jpg
         subtitle:
         title: Let's talk about Pay Discrimination
         url: portfolio/omega
