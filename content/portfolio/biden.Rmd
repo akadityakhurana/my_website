@@ -1,0 +1,116 @@
+---
+categories:
+- ""
+- ""
+date: "2017-10-31T22:26:09-05:00"
+description:
+draft: false
+image: biden.jpg
+keywords: ""
+slug: biden
+title: Do we really like Biden?
+---
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+library(scales)
+```
+
+# Biden's Approval Margins
+
+```{r, cache=TRUE}
+# Import approval polls data directly off fivethirtyeight website
+approval_polllist <- read_csv('https://projects.fivethirtyeight.com/biden-approval-data/approval_polllist.csv') 
+
+glimpse(approval_polllist)
+
+# Using `lubridate` to fix dates, as they are given as characters.
+approval_polllist <- approval_polllist %>% 
+  mutate(modeldate = as_date(modeldate, format = "%m/%d/%Y"),
+         enddate = as_date(enddate, format = "%m/%d/%Y"),
+         createddate = as_date(createddate, format = "%m/%d/%Y"),
+         startdate = as_date(startdate, format = "%m/%d/%Y"))
+```
+
+## Create a plot
+
+Your plot should look like this:
+
+```{r trump_margins, echo=FALSE, out.width="100%"}
+knitr::include_graphics(here::here("images", "biden_approval_margin.png"), error = FALSE)
+```
+
+```{r}
+# Using `lubridate` to fix dates, as they are given as characters.
+approval_polllist <- approval_polllist %>% 
+  mutate(modeldate = as_date(modeldate, format = "%m/%d/%Y"),
+         enddate = as_date(enddate, format = "%m/%d/%Y"),
+         createddate = as_date(createddate, format = "%m/%d/%Y"),
+         startdate = as_date(startdate, format = "%m/%d/%Y"))
+
+approval_polllist <- approval_polllist %>% 
+  mutate(week = week(enddate),
+         net_approval=approve-disapprove) 
+  
+net_approval_frame <- approval_polllist %>% 
+  group_by(week) %>% 
+    summarize(mean_app=mean(net_approval),
+              count_app=n(),
+              sd_app=sd(net_approval),
+              SE_app=sd_app/sqrt(count_app),
+              t_crit = qt(0.975, count_app-1),
+              CI_low = mean_app - t_crit*SE_app,
+              CI_high= mean_app + t_crit*SE_app,
+              delta=CI_high-CI_low, #equals the ribbon width
+              sample=sum(samplesize))
+
+net_approval_frame
+
+ggplot(net_approval_frame, aes(x=week,y=mean_app))+
+      geom_ribbon(aes(ymin=CI_low,ymax=CI_high),
+                  colour="chocolate",fill="grey90", outline.type="both")+
+      geom_line(color="chocolate")+
+      geom_point(color="chocolate")+
+      geom_smooth(formula = y ~ x,se=FALSE, method="loess")+
+      scale_y_continuous(name="Average Approval Margin (Approve - Disapprove)",
+                         breaks=seq(-7.5,20,2.5))+
+      scale_x_continuous(name="Week of the year", limits=c(0,39))+
+      theme_bw()+
+      geom_line(aes(y=0), color="orange", size=2)+
+      labs(title="Estimating Approval Margin (approve-disapprove) for Joe
+           Biden", subtitle="Weekly average of all polls")+
+      theme(panel.border = element_blank())+
+      NULL
+```
+
+## Compare Confidence Intervals
+
+Compare the confidence intervals for `week 3` and `week 25`. Can you explain what's going on? One paragraph would be enough.
+
+From the graph we see that weeks 3 and 25 are outliers in terms of the ribbon width, showing the confidence interval. The 95% confidence interval recorded for week 3 is \[13.11 - 24.162\], or a distance of 11.05, whilst this gap shrinks to \[10.30 - 12.752\] or to a difference of 2.45 by week 25, the lowest of all. The distance of the two points correlates positively with the standard deviation of the poll results and negatively with the sample size. In week 3 for example, where the delta is the largest, the sample size of the polls was one of the lowest and the standard deviation one of the highest, and vice verca for week 25.

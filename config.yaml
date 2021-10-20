@@ -92,10 +92,10 @@ params:
         subtitle: 
         title: Is Climate Change real?
         url: portfolio/climate
-      - image: .jpg
+      - image: biden.jpg
         subtitle: 
-        title: 
-        url: portfolio/
+        title: Do we really like Biden?
+        url: portfolio/biden
 #  two:
 #    buttonText: Get Started
 #    enable: yes
