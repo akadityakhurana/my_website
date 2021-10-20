@@ -37,9 +37,9 @@ params:
     copyright: Aditya Khurana
     enable: yes
     quicklinks:
-      - alt: HTML5 UP
-        text: 'Design: '
-        url: https://www.html5up.net
+#      - alt: 
+#        text: 
+#        url: 
     social:
 #      - icon: fa-twitter
 #        label: Twitter
@@ -75,8 +75,8 @@ params:
       - name: My CV
         url: blogs/cv
     menu: Menu
-    subtitle: By HTML5 Up
-    title: Forty
+    subtitle: By Aditya Khurana
+    title: Now I know R
   tiles:
     enable: yes
     showcase:
@@ -88,30 +88,22 @@ params:
         subtitle: 
         title: How much do we drink?
         url: portfolio/drink
-      - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Magna
-        url: blogs/magna
-      - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
-        url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
-      - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
-  two:
-    buttonText: Get Started
-    enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \r\n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \r\n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \r\n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\r\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
-    url: blogs
+      - image: weather.jpg
+        subtitle: 
+        title: Is Climate Change real?
+        url: portfolio/climate
+      - image: .jpg
+        subtitle: 
+        title: 
+        url: portfolio/
+#  two:
+#    buttonText: Get Started
+#    enable: yes
+#    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
+#      \r\n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \r\n    Pellentesque
+#      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
+#      pellentesque lorem ipsum dolor. \r\n    Nullam et orci eu lorem consequat tincidunt.
+#      Vivamus et sagittis libero.\r\n    Mauris aliquet magna magna sed nunc rhoncus
+#      amet pharetra et feugiat tempus."
+#    title: Massa libero
+#    url: blogs
